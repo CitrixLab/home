@@ -1,7 +1,12 @@
 web3 api key 🔑 
 bpx0uvmdbq5julg9kgx9mijaazcelglul3h7xyckoqftsemqpd75qpbqq5zbysx8
+Wallet Address:
+GAD2LYD5TPUEUIUBYZKHKQSDMJ672X757YYNQYVS7MCDSNH33F6D2XU2
+Secret Seed:
+SDEHN4SC5Y36WZKGZQFGWNUPM4FJN45PUMFOO4ZRJUXKA6NZGHLWDKO6
 
-p.phrase
+
+Mainet wallet p.phrase
 ring junk volume album language clock nice gift torch arctic chalk quick broom hub develop road pond ticket spawn ready hidden scorpion goose issue
 
 Public key 🔑 
