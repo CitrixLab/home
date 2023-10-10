@@ -221,6 +221,8 @@
 	<style>
         canvas {
             background-color: #000;
+            display: block;
+            margin: 0 auto;
         }
     	</style>
 </head>
@@ -275,44 +277,38 @@ Join us on a journey through cutting-edge R&D, exploring platforms like Github, 
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
 
-        // Car properties
-        const car = {
-            x: 100,
-            y: 450,
-            width: 50,
-            height: 30,
-            speed: 5,
-        };
+        const blockSize = 32; // Size of each block
+        const rows = canvas.height / blockSize;
+        const cols = canvas.width / blockSize;
 
-        function drawCar() {
-            ctx.fillStyle = 'red';
-            ctx.fillRect(car.x, car.y, car.width, car.height);
+        // Create a grid to represent the world
+        const world = [];
+        for (let i = 0; i < rows; i++) {
+            world[i] = [];
+            for (let j = 0; j < cols; j++) {
+                world[i][j] = Math.random() < 0.5 ? 0 : 1; // 0 represents empty space, 1 represents a block
+            }
         }
 
+        // Game loop
         function gameLoop() {
             requestAnimationFrame(gameLoop);
+
+            // Clear the canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Move the car
-            if (car.x + car.width < canvas.width) {
-                car.x += car.speed;
+            // Draw the world
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    if (world[i][j] === 1) {
+                        ctx.fillStyle = 'gray';
+                        ctx.fillRect(j * blockSize, i * blockSize, blockSize, blockSize);
+                    }
+                }
             }
-
-            drawCar();
         }
 
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowRight') {
-                car.speed = 5;
-            }
-        });
-
-        document.addEventListener('keyup', (event) => {
-            if (event.key === 'ArrowRight') {
-                car.speed = 0;
-            }
-        });
-
+        // Start the game loop
         gameLoop();
     </script>
  <script src="
