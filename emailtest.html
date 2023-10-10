@@ -107,14 +107,13 @@
 	                if (xhr.readyState === 4) {
 	                    if (xhr.status === 200) {
 	                        const data = xhr.responseText;
-	                        document.getElementById('result').textContent = `Fetched Data: ${data}`;
+	                        document.getElementById('result').textContent = `${data}`;
 	                    } else {
 	                        console.error('Failed to fetch data. Status:', xhr.status);
 	                    }
 	                }
-	            };
-	
-	            return xhr.send();
+	            }; 
+	            return fetchedData = xhr.send();
         	//return fetchedData;
             }
 
