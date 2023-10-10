@@ -266,35 +266,54 @@ Join us on a journey through cutting-edge R&D, exploring platforms like Github, 
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
     	<script>
-
-        // Create a scene
         const scene = new THREE.Scene();
-
-        // Create a camera
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 5;
-
-        // Create a renderer
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Create a cube
         const geometry = new THREE.BoxGeometry();
         const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         const cube = new THREE.Mesh(geometry, material);
         scene.add(cube);
 
-        // Animation loop
-        const animate = function () {
+        const player = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xff0000 }));
+        scene.add(player);
+
+        camera.position.z = 5;
+        player.position.set(0, 0, -5);
+
+        const moveSpeed = 0.1;
+
+        function animate() {
             requestAnimationFrame(animate);
 
-            // Rotate the cube
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
+            // Keyboard input for movement
+            const keyboard = {};
+
+            document.addEventListener('keydown', (event) => {
+                keyboard[event.key] = true;
+            });
+
+            document.addEventListener('keyup', (event) => {
+                keyboard[event.key] = false;
+            });
+
+            if (keyboard['ArrowLeft']) {
+                player.position.x -= moveSpeed;
+            }
+            if (keyboard['ArrowRight']) {
+                player.position.x += moveSpeed;
+            }
+            if (keyboard['ArrowUp']) {
+                player.position.z -= moveSpeed;
+            }
+            if (keyboard['ArrowDown']) {
+                player.position.z += moveSpeed;
+            }
 
             renderer.render(scene, camera);
-        };
+        }
 
         animate();
     </script>
