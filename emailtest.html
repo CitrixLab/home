@@ -221,8 +221,7 @@
 	<style>
         canvas {
             background-color: #000;
-            display: block;
-            margin: 0 auto;
+            overflow: hidden;
         }
     	</style>
 </head>
@@ -270,46 +269,68 @@ Join us on a journey through cutting-edge R&D, exploring platforms like Github, 
         </ul>
     </section>
 	
-	//<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-	
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
     <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
 
-        const blockSize = 32; // Size of each block
-        const rows = canvas.height / blockSize;
-        const cols = canvas.width / blockSize;
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
 
-        // Create a grid to represent the world
-        const world = [];
-        for (let i = 0; i < rows; i++) {
-            world[i] = [];
-            for (let j = 0; j < cols; j++) {
-                world[i][j] = Math.random() < 0.5 ? 0 : 1; // 0 represents empty space, 1 represents a block
-            }
-        }
+        camera.position.z = 5;
+
+        // Create a simple ground plane
+        const groundGeometry = new THREE.PlaneGeometry(10, 10);
+        const groundMaterial = new THREE.MeshBasicMaterial({ color: 0x999999 });
+        const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+        ground.rotation.x = -Math.PI / 2;
+        scene.add(ground);
+
+        // Array to store blocks
+        const blocks = [];
 
         // Game loop
-        function gameLoop() {
-            requestAnimationFrame(gameLoop);
+        const animate = function () {
+            requestAnimationFrame(animate);
 
-            // Clear the canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Rotate the cube
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
 
-            // Draw the world
-            for (let i = 0; i < rows; i++) {
-                for (let j = 0; j < cols; j++) {
-                    if (world[i][j] === 1) {
-                        ctx.fillStyle = 'gray';
-                        ctx.fillRect(j * blockSize, i * blockSize, blockSize, blockSize);
-                    }
-                }
-            }
+            renderer.render(scene, camera);
+        };
+
+        animate();
+
+        // Function to add a block at a given position
+        function addBlock(x, y, z) {
+            const blockGeometry = new THREE.BoxGeometry(1, 1, 1);
+            const blockMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+            const block = new THREE.Mesh(blockGeometry, blockMaterial);
+            block.position.set(x, y, z);
+            scene.add(block);
+            blocks.push(block);
         }
 
-        // Start the game loop
-        gameLoop();
+        // Mouse click event to add a block
+        window.addEventListener('click', (event) => {
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects([ground]);
+            if (intersects.length > 0) {
+                const intersection = intersects[0];
+                const position = intersection.point;
+                addBlock(position.x, position.y + 0.5, position.z);
+            }
+        });
     </script>
  <script src="
 	//https://https://lexusvp.github.io/citrixlab/license/js/initiate-send-email.js"></script>
