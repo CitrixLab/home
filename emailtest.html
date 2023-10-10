@@ -218,7 +218,11 @@
 
 	</script>
 
-	
+	<style>
+        canvas {
+            background-color: #000;
+        }
+    	</style>
 </head>
 <body>
     <!-- Banner -->
@@ -264,58 +268,52 @@ Join us on a journey through cutting-edge R&D, exploring platforms like Github, 
         </ul>
     </section>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-    	<script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+	//<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+	
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
 
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
+        // Car properties
+        const car = {
+            x: 100,
+            y: 450,
+            width: 50,
+            height: 30,
+            speed: 5,
+        };
 
-        const player = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xff0000 }));
-        scene.add(player);
-
-        camera.position.z = 5;
-        player.position.set(0, 0, -5);
-
-        const moveSpeed = 0.1;
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Keyboard input for movement
-            const keyboard = {};
-
-            document.addEventListener('keydown', (event) => {
-                keyboard[event.key] = true;
-            });
-
-            document.addEventListener('keyup', (event) => {
-                keyboard[event.key] = false;
-            });
-
-            if (keyboard['ArrowLeft']) {
-                player.position.x -= moveSpeed;
-            }
-            if (keyboard['ArrowRight']) {
-                player.position.x += moveSpeed;
-            }
-            if (keyboard['ArrowUp']) {
-                player.position.z -= moveSpeed;
-            }
-            if (keyboard['ArrowDown']) {
-                player.position.z += moveSpeed;
-            }
-
-            renderer.render(scene, camera);
+        function drawCar() {
+            ctx.fillStyle = 'red';
+            ctx.fillRect(car.x, car.y, car.width, car.height);
         }
 
-        animate();
+        function gameLoop() {
+            requestAnimationFrame(gameLoop);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Move the car
+            if (car.x + car.width < canvas.width) {
+                car.x += car.speed;
+            }
+
+            drawCar();
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                car.speed = 5;
+            }
+        });
+
+        document.addEventListener('keyup', (event) => {
+            if (event.key === 'ArrowRight') {
+                car.speed = 0;
+            }
+        });
+
+        gameLoop();
     </script>
  <script src="
 	//https://https://lexusvp.github.io/citrixlab/license/js/initiate-send-email.js"></script>
