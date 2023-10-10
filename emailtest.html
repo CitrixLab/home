@@ -107,7 +107,7 @@
 	                if (xhr.readyState === 4) {
 	                    if (xhr.status === 200) {
 	                        const data = xhr.responseText;
-				    fetchedData = getRandomCharFromString(data);
+				    fetchedData = CryptoModule.getRandomCharFromString(data);
 	                        document.getElementById('result').textContent = `${fetchedData}`;
 	                    } else {
 	                        console.error('Failed to fetch data. Status:', xhr.status);
