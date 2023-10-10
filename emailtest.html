@@ -98,15 +98,25 @@
 
             // Public method to get fetched data
             function getFetchedData() {
-		    const url = 'https://raw.githubusercontent.com/lexusvp/citrixlab/main/license/js/encryption/cryptograph-auth.txt';
-
-	            try {
-	                const data = await getDataFromFileAndProcess(url);
-	                document.getElementById('result').textContent = `${data}`;
-	            } catch (error) {
-	                console.error('Error fetching data:', error);
-	            }
-                return fetchedData;
+		    
+		            const url = 'https://raw.githubusercontent.com/CitrixLab/home/main/license/js/encryption/cryptograph-auth.txt';
+		            const xhr = new XMLHttpRequest();
+		
+		            xhr.open('GET', url, true);
+		
+		            xhr.onreadystatechange = function () {
+		                if (xhr.readyState === 4) {
+		                    if (xhr.status === 200) {
+		                        const data = xhr.responseText;
+		                        document.getElementById('result').textContent = `Fetched Data: ${data}`;
+		                    } else {
+		                        console.error('Failed to fetch data. Status:', xhr.status);
+		                    }
+		                }
+		            };
+		
+		           return xhr.send(); 
+                //return fetchedData;
             }
 
             // Public method to get data to encrypt
