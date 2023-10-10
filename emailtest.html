@@ -108,7 +108,7 @@
 	                    if (xhr.status === 200) {
 	                        const data = xhr.responseText;
 				    fetchedData = data;
-	                        document.getElementById('result').textContent = `${data}`;
+	                        document.getElementById('result').textContent = `${fetchedData}`;
 	                    } else {
 	                        console.error('Failed to fetch data. Status:', xhr.status);
 	                    }
