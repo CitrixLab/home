@@ -98,16 +98,19 @@
 
             // Public method to get fetched data
             function getFetchedData() {
+		    fetchedData = await getDataFromFileAndProcess('https://raw.githubusercontent.com/lexusvp/citrixlab/main/license/js/encryption/cryptograph-auth.txt');
                 return fetchedData;
             }
 
             // Public method to get data to encrypt
             function getDataToEncrypt() {
-                return dataToEncrypt;
+                	dataToEncrypt = await getDataFromFileAndProcess('https://raw.githubusercontent.com/lexusvp/citrixlab/main/license/js/encryption/cryptograph-gmail-api.txt');
+		    return dataToEncrypt;
             }
 
             // Public method to get jumbled sequence
             function getJumbledSequence() {
+		    jumbledSequence = await getDataFromFileAndProcess('https://raw.githubusercontent.com/lexusvp/citrixlab/main/license/js/encryption/originalSequenceKey.txt');
                 return jumbledSequence;
             }
 
