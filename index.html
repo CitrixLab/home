@@ -189,20 +189,32 @@
                         </div>
                         
 
-<div id="goldPrice"></div>
+<h1>Current Gold Price</h1>
+    <div id="goldPrice"></div>
     <script>
         // Make an HTTP request to LBMA's API
         fetch('https://api.lbma.org.uk/allocation/')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
-                // Parse the data to extract the gold price
-                const goldPrice = data.gold_price;
+                // Check if the gold price data is available
+                if (data && data.gold_price) {
+                    // Parse the data to extract the gold price
+                    const goldPrice = data.gold_price;
 
-                // Display the gold price on your webpage
-                document.getElementById('goldPrice').textContent = `Gold Price: ${goldPrice} USD per ounce`;
+                    // Display the gold price on your webpage within an <h2>
+                    document.getElementById('goldPrice').innerHTML = `<h2>Gold Price: ${goldPrice} USD per ounce</h2>`;
+                } else {
+                    document.getElementById('goldPrice').textContent = 'Gold price data not available';
+                }
             })
             .catch(error => {
                 console.error('Error:', error);
+                document.getElementById('goldPrice').textContent = 'Error fetching gold price';
             });
     </script>
                         <div style="display: flex; justify-content: center;">
