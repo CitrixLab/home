@@ -214,7 +214,7 @@
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('goldPrice').textContent = 'Error fetching gold price';
+                document.getElementById('goldPrice').textContent = 'Error fetching gold price: ', error;
             });
     </script>
                         <div style="display: flex; justify-content: center;">
