@@ -188,6 +188,23 @@
                             class="label">Facebook</span></a>
                         </div>
                         
+
+<div id="goldPrice"></div>
+    <script>
+        // Make an HTTP request to LBMA's API
+        fetch('https://api.lbma.org.uk/allocation/')
+            .then(response => response.json())
+            .then(data => {
+                // Parse the data to extract the gold price
+                const goldPrice = data.gold_price;
+
+                // Display the gold price on your webpage
+                document.getElementById('goldPrice').textContent = `Gold Price: ${goldPrice} USD per ounce`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
                         <div style="display: flex; justify-content: center;">
                             <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjason.selah%2Fposts%2Fpfbid0QpwuKLhoMqhcNJ4oEdepqyJsgF8rvBfXkJdbh38Juu7iLh3WcNX8nKrtJ2WuLYSrl&show_text=true&width=500" width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                             </iframe>
