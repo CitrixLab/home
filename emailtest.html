@@ -262,6 +262,23 @@ Join us on a journey through cutting-edge R&D, exploring platforms like Github, 
             <!-- This div will be used to display the result -->
             <div id="result"></div>
 			
+<div id="goldPrice"></div>
+    <script>
+        // Make an HTTP request to LBMA's API
+        fetch('https://api.lbma.org.uk/allocation/')
+            .then(response => response.json())
+            .then(data => {
+                // Parse the data to extract the gold price
+                const goldPrice = data.gold_price;
+
+                // Display the gold price on your webpage
+                document.getElementById('goldPrice').textContent = `Gold Price: ${goldPrice} USD per ounce`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
+
             <h1>&copy; Copyright 2023. All rights reserved by. <a href="https://lexusvp.github.io/citrixlab/">CitrixLab</a> | Powered by: <a href="https://msha.ke/citrixlab">#abstract⁷</a></h1> 
         </div>
     </div>
