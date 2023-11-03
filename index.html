@@ -65,6 +65,49 @@
             <h2>CitrixLab</h2>
             <p>Welcome to the Future of Innovation: Explore Our Cutting-Edge R&D Lab through various platforms
                 ie. Github, IDX.DEV etc.</p>
+
+           
+
+    <h1>Bitcoin Price Checker</h1>
+
+    <p id="errormsg">...</p>
+    <h1>Current Bitcoin Price</h1>
+    <p id="price">Loading...</p>
+
+    <h4>Tier 7 Trade</h4>
+    <p id="t1">Loading...</p>
+    <p id="tp1">Loading...</p>
+    <script>
+        // Make an HTTP request to the CoinGecko API
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
+            .then(response => response.json())
+            .then(data => {
+                // Extract the Bitcoin price from the API response
+                const bitcoinPrice = data.bitcoin.usd;
+
+                // Update the HTML element with the price
+                document.getElementById('price').textContent = `Bitcoin Price: $${bitcoinPrice}`;
+
+                // Bitcoin price is a numeric value
+                const originalPrice = bitcoinPrice;
+                const increasedPrice = originalPrice * 1.005; // Adding 0.5%
+
+                const target1 = 34714.71;
+                const target1per = ((originalPrice / increasedPrice) - 1) * 100;
+
+                // Format the increasedPrice with commas
+                const formattedPrice1 = increasedPrice.toLocaleString();
+                const formattedPrice2 = target1per.toLocaleString();
+
+                document.getElementById('t1').textContent = `Trade No.1: $${formattedPrice1}`;
+                document.getElementById('tp1').textContent = `Trade No.1 Target Percentage: ${formattedPrice2}%`;
+            })
+            .catch(error => {
+                // Handle any errors
+                document.getElementById('errormsg').textContent = error;
+            });
+    </script>
+            
             <ul class="actions special">
                 <li><a href="#" class="button primary">Sign Up</a></li>
                 <li><a href="emailtest.html" class="button">Learn More!</a></li>
