@@ -91,9 +91,7 @@
                 // Bitcoin price is a numeric value
                 const originalPrice = bitcoinPrice;
                 const increasedPrice = originalPrice * 1.005; // Adding 0.5%
-
-                const target1 = 34714.71;
-                const target1per = ((originalPrice / increasedPrice) - 1) * 100;
+                const target1per = ((originalPrice / increasedPrice) - 1) * -100;
 
                 // Format the increasedPrice with commas
                 const formattedPrice1 = increasedPrice.toLocaleString();
