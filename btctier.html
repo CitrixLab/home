@@ -19,41 +19,86 @@
             <p id="errormsg">...</p>
             <h1>Current Bitcoin Price</h1>
             <p id="price">Loading...</p>
+            <p id="price2">Loading...</p> <!-- New element for displaying new BTC price -->
 
             <h4>Tier 7 Trade</h4>
             <p id="t1">Loading...</p>
             <p id="tp1">Loading...</p>
+        
+        <script src="https://widgets.coingecko.com/coingecko-coin-price-chart-widget.js"></script>
+<coingecko-coin-price-chart-widget currency="usd" coin-id="bitcoin" locale="en" height="300"></coingecko-coin-price-chart-widget>
         </div>
     </div>
+
+    
     <script>
-        // Make an HTTP request to the CoinGecko API
-        fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
-            .then(response => response.json())
-            .then(data => {
-                // Extract the Bitcoin price from the API response
-                const bitcoinPrice = data.bitcoin.usd;
+        // Initialize variables
+        let bitcoinPrice;
+        let btcSP;
+        let target1per;
 
-                // Update the HTML element with the price
-                document.getElementById('price').textContent = `Bitcoin Price: $${bitcoinPrice}`;
+        // Function to fetch Bitcoin price with a 10-second delay
+        const fetchBitcoinPriceDelayed = () => {
+            fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
+                .then(response => response.json())
+                .then(data => {
+                    // Extract the Bitcoin price from the API response
+                    bitcoinPrice = data.bitcoin.usd;
 
-                // Bitcoin price is a numeric value
-                const originalPrice = bitcoinPrice;
-                const increasedPrice = originalPrice * 1.005; // Adding 0.5%
+                    // After both prices are available, proceed with calculations and updates
+                    updateTradeInfo();
+                })
+                .catch(error => {
+                    // Handle any errors
+                    document.getElementById('errormsg').textContent = error;
+                });
+        };
 
-                const target1 = 34714.71;
-                const target1per = ((originalPrice / increasedPrice) - 1) * 100;
+        // Function to fetch the current BTC price with no delay
+        const fetchBitcoinPrice = () => {
+            fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
+                .then(response => response.json())
+                .then(data => {
+                    // Extract the Bitcoin price from the API response
+                    btcSP = data.bitcoin.usd;
 
-                // Format the increasedPrice with commas
-                const formattedPrice1 = increasedPrice.toLocaleString();
-                const formattedPrice2 = target1per.toLocaleString();
+                    // Update the HTML element with the current Bitcoin price
+                    document.getElementById('price').textContent = `Bitcoin Price: $${btcSP}`;
+                    // Additional line to display the new BTC price
+                    const formattedPrice3 = btcSP.toLocaleString();
+                    document.getElementById('price2').textContent = `BTC new price: $${formattedPrice3}`;
+                })
+                .catch(error => {
+                    // Handle any errors
+                    document.getElementById('errormsg').textContent = error;
+                });
+        };
 
-                document.getElementById('t1').textContent = `Trade No.1: $${formattedPrice1}`;
-                document.getElementById('tp1').textContent = `Trade No.1 Target Percentage: ${formattedPrice2}%`;
-            })
-            .catch(error => {
-                // Handle any errors
-                document.getElementById('errormsg').textContent = error;
-            });
+        // Fetch the current BTC price with no delay and set a 10-second delay for the other
+        fetchBitcoinPrice();
+        setTimeout(fetchBitcoinPriceDelayed, 10000);
+
+        // Function to update trade information
+        const updateTradeInfo = () => {
+            // Bitcoin price is a numeric value
+            const originalPrice = btcSP;
+            const increasedPrice = originalPrice * 1.005; // Adding 0.5%
+
+            target1per = ((originalPrice / increasedPrice) - 1) * 100;
+
+            // Format the increasedPrice with commas
+            const formattedPrice1 = increasedPrice.toLocaleString();
+            const formattedPrice2 = target1per.toLocaleString();
+
+            document.getElementById('t1').textContent = `Trade No.1: $${formattedPrice1}`;
+            document.getElementById('tp1').textContent = `Trade No.1 Target Percentage: ${formattedPrice2}%`;
+        };
+
+        // Update btcSP and call updateTradeInfo every 0.5 seconds
+        setInterval(() => {
+            fetchBitcoinPrice();
+            updateTradeInfo();
+        }, 500);
     </script>
 </body>
 </html>
