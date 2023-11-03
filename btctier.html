@@ -82,7 +82,7 @@
 
         // Fetch the current BTC price with no delay and set a 10-second delay for the other
         fetchBitcoinPrice();
-        setTimeout(fetchBitcoinPriceDelayed, 10000);
+        setTimeout(fetchBitcoinPriceDelayed, 1000);
 
         // Function to update trade information
         const updateTradeInfo = () => {
@@ -98,6 +98,9 @@
 
             document.getElementById('t1').textContent = `Trade No.1: $${formattedPrice1}`;
             document.getElementById('tp1').textContent = `Trade No.1 Target Percentage: ${formattedPrice2}%`;
+            
+            document.getElementById('errormsg').textContent = ". . .";
+                
         };
 
         // Update btcSP and call updateTradeInfo every 0.5 seconds
