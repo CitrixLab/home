@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Bitcoin Price Checker</title>
-    
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="https://lexusvp.github.io/citrixlab/assets/css/main.css" />
@@ -11,6 +10,10 @@
     <style>
         .centered-div {
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
         .form-box {
             display: inline-block;
@@ -30,27 +33,17 @@
             <p id="priceChange">Loading...</p>
             <p id="priceDate">Loading...</p>
 
-
-<!-- New element for displaying new BTC price -->
-
-
-
             <h4>Tier 7 Trade</h4>
             <p id="t1">Loading...</p>
             <p id="tp1">Loading...</p>
-
         </div>
     </div>
-    
-    <script src="https://widgets.coingecko.com/coingecko-coin-price-chart-widget.js"></script>
-    <coingecko-coin-price-chart-widget currency="usd" coin-id="bitcoin" locale="en" height="300"></coingecko-coin-price-chart-widget>
-    
+
     <script>
         // Initialize variables
         let bitcoinPrice;
         let btcSP;
         let target1per;
-
 
         const fetchBitcoinDetails = () => {
             // Make an HTTP request to the CoinGecko API to get Bitcoin's details
@@ -61,18 +54,17 @@
                     const priceChange24h = btcDetails.market_data.price_change_percentage_24h;
                     const lastUpdate = new Date(btcDetails.last_updated).toLocaleString();
                     const bitcoinPriceNew = btcDetails.market_data.current_price.usd.toLocaleString();
-                    
-                    document.getElementById('priceNew').textContent = `Bitcoin Price (USD): $${bitcoinPrice}.00`;
-                
-                    document.getElementById('priceChange').textContent = `24H Percentage Change: ${priceChange24h.toFixed(2)}%`;
-                
-                    document.getElementById('priceDate').textContent = `Last Update: ${lastUpdate}`;
-                
+
+                    document.getElementById('priceNew').textContent = `Bitcoin Price (USD): $${bitcoinPriceNew}`;
+                    document.getElementById('priceChange').textContent = `24H Percentage Change: ${priceChange24h.toFixed(2)}%`;
+                    document.getElementById('priceDate').textContent = `Last Update: ${lastUpdate}`;
                 })
-            .catch(error => {
-                // Handle any errors
-                document.getElementById('errormsg').textContent = error;
-        });
+                .catch(error => {
+                    // Handle any errors
+                    document.getElementById('errormsg').textContent = error;
+                });
+        };
+
         // Function to fetch Bitcoin price with a 1-second delay
         const fetchBitcoinPriceDelayed = () => {
             fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
@@ -132,7 +124,6 @@
             document.getElementById('tp1').textContent = `Trade No.1 Target Percentage: ${formattedPrice2}%`;
             
             document.getElementById('errormsg').textContent = ". . .";
-                
         };
 
         // Update btcSP and call updateTradeInfo every 0.5 seconds
