@@ -32,7 +32,7 @@
             <p id="tp1">Loading...</p>
         
         <script src="https://widgets.coingecko.com/coingecko-coin-price-chart-widget.js"></script>
-<coingecko-coin-price-chart-widget currency="usd" coin-id="bitcoin" locale="en" height="300"></coingecko-coin-price-chart-widget>
+        <coingecko-coin-price-chart-widget currency="usd" coin-id="bitcoin" locale="en" height="300"></coingecko-coin-price-chart-widget>
         </div>
     </div>
 
@@ -43,13 +43,13 @@
         let btcSP;
         let target1per;
 
-        // Function to fetch Bitcoin price with a 10-second delay
+        // Function to fetch Bitcoin price with a 1-second delay
         const fetchBitcoinPriceDelayed = () => {
             fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
                 .then(response => response.json())
                 .then(data => {
                     // Extract the Bitcoin price from the API response
-                    bitcoinPrice = data.bitcoin.usd;
+                    btcSP = data.bitcoin.usd;
 
                     // After both prices are available, proceed with calculations and updates
                     updateTradeInfo();
@@ -66,10 +66,12 @@
                 .then(response => response.json())
                 .then(data => {
                     // Extract the Bitcoin price from the API response
-                    btcSP = data.bitcoin.usd;
+                    bitcoinPrice = data.bitcoin.usd;
+                    const formattedPrice4 = bitcoinPrice.toLocaleString();
 
                     // Update the HTML element with the current Bitcoin price
-                    document.getElementById('price').textContent = `Bitcoin Price: $${btcSP}`;
+                    document.getElementById('price').textContent = `Bitcoin Price: $${formattedPrice4}`;
+                    
                     // Additional line to display the new BTC price
                     const formattedPrice3 = btcSP.toLocaleString();
                     document.getElementById('price2').textContent = `BTC new price: $${formattedPrice3}`;
