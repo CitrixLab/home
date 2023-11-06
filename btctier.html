@@ -1110,11 +1110,13 @@
                         <div class="inner-content text-center">
 
                             <div class="c100 p40 small dark center">
-                                <span>40%</span>
+                                <span id="percentage">40%</span>
                                 <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                             </div>
 
-                            <p>.small</p>
+			    <label for="percentageInput">Enter a Percentage: </label>
+			    <input type="number" id="percentageInput" min="0" max="100" value="40">
+                            <p>.small</p> 
 
                         </div>
                     </div><!-- /.col -->
@@ -1123,10 +1125,12 @@
                         <div class="inner-content text-center">
 
                             <div class="c100 p50 small dark center orange">
-                                <span>50%</span>
+                                <span id="percentage1">50%</span>
                                 <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                             </div>
 
+			    <label for="percentageInput1">Enter a Percentage: </label>
+			    <input type="number" id="percentageInput1" min="0" max="100" value="50">
                             <p>.small.orange</p>
 
                         </div>
@@ -1136,10 +1140,12 @@
                         <div class="inner-content text-center">
 
                             <div class="c100 p60 small dark center green">
-                                <span>60%</span>
+                                <span id="percentage2">60%</span>
                                 <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                             </div>
 
+			    <label for="percentageInput2">Enter a Percentage: </label>
+			    <input type="number" id="percentageInput2" min="0" max="100" value="60">
                             <p>.small.green</p>
 
                         </div>
@@ -1149,10 +1155,12 @@
                         <div class="inner-content text-center">
 
                             <div class="c100 p70 small dark center green">
-                                <span>70%</span>
+                                <span id="percentage3">70%</span>
                                 <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                             </div>
 
+			    <label for="percentageInput3">Enter a Percentage: </label>
+			    <input type="number" id="percentageInput3" min="0" max="100" value="50">
                             <p>.small.green</p>
 
                         </div>
@@ -1162,11 +1170,13 @@
                         <div class="inner-content text-center">
 
                             <div class="c100 p80 small dark center orange">
-                                <span>80%</span>
+                                <span id="percentage4">80%</span>
                                 <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                             </div>
 
                             <p>.small.orange</p>
+			    <label for="percentageInput4">Enter a Percentage: </label>
+			    <input type="number" id="percentageInput4" min="0" max="100" value="50">
 
                         </div>
                     </div><!-- /.col -->
@@ -1175,46 +1185,67 @@
                         <div class="inner-content text-center">
 
                             <div class="c100 p90 small dark center">
-                                <span>90%</span>
+                                <span id="percentage5">90%</span>
                                 <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                             </div>
 
                             <p>.small</p>
+			    <label for="percentageInput5">Enter a Percentage: </label>
+			    <input type="number" id="percentageInput5" min="0" max="100" value="50">
 
                         </div>
                     </div><!-- /.col -->
 
                 </div><!-- /.row -->
 	
-	    <label for="percentageInput">Enter a Percentage: </label>
-	    <input type="number" id="percentageInput" min="0" max="100" value="50">
 	    
 	    <script>
-	        const percentageInput = document.getElementById("percentageInput");
-	        const percentageSpan = document.getElementById("percentage");
-	        const circleDiv = document.querySelector(".c100");
+	        function setupPercentage(idInput, idSpan, defaultValue, defaultColor) {
+	            const percentageInput = document.getElementById(idInput);
+	            const percentageSpan = document.getElementById(idSpan);
+	            const circleDiv = document.querySelector(".c100");
 	
-	        // Update the percentage when the input changes
-	        percentageInput.addEventListener("input", function() {
-	            const newPercentage = this.value;
-	            percentageSpan.textContent = newPercentage + "%";
-	            updatePercentageFill(newPercentage);
-	            updateCircleClass(newPercentage);
-	        });
+	            percentageSpan.textContent = defaultValue + "%"; // Set initial value
+	            updatePercentageFill(defaultValue);
+	            
+		    switch (idInput) {
+		    case "percentageInput":
+		        defaultColor = "green";
+		        break;
+		    case "percentageInput1":
+		        defaultColor = "orange";
+		        break; 
+		    default:
+		        defaultColor = "";
+			}
+			
+	            updateCircleClass(defaultValue, defaultColor);
 	
-	        function updatePercentageFill(newPercentage) {
-	            const fillElement = document.querySelector(".c100 .fill");
-	            //fillElement.style.transform = `rotate(${(newPercentage / 100) * 360}deg)`;
+	            percentageInput.addEventListener("input", function() {
+	                const newPercentage = this.value;
+	                percentageSpan.textContent = newPercentage + "%";
+	                updatePercentageFill(newPercentage);
+	                 
+	                
+	                updateCircleClass(newPercentage, defaultColor);
+	            });
+	
+	            function updatePercentageFill(newPercentage) {
+	                const fillElement = document.querySelector(".c100 .fill"); 
+	            }
+	
+	            function updateCircleClass(newPercentage, newColor) {
+	                const classValue = `c100 p${newPercentage} small dark center ${newColor}`;
+	                circleDiv.className = classValue;
+	            }
 	        }
 	
-	        function updateCircleClass(newPercentage) {
-	            const classValue = `c100 p${newPercentage} small dark center`;
-	            circleDiv.className = classValue;
-	        }
+	        // Initialize for the first object
+	        setupPercentage("percentageInput", "percentage", 40, "green");
+	        
+	        // Initialize for the second object
+	        setupPercentage("percentageInput1", "percentage1", 50, "orange");
 	
-	        // Initial update based on the default value
-	        updatePercentageFill(50);
-	        updateCircleClass(50);
 	    </script>
 	
             <h1>Pure CSS Percentage Circle - circle100</h1>
