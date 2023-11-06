@@ -193,35 +193,32 @@
                             class="label">Facebook</span></a>
                         </div>
                         
-
-<h1>Current Gold Price</h1>
-    <div id="goldPrice"></div>
-    <script>
-        // Make an HTTP request to LBMA's API
-        fetch('https://api.lbma.org.uk/allocation/')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Check if the gold price data is available
-                if (data && data.gold_price) {
-                    // Parse the data to extract the gold price
-                    const goldPrice = data.gold_price;
-
-                    // Display the gold price on your webpage within an <h2>
-                    document.getElementById('goldPrice').innerHTML = `<h2>Gold Price: ${goldPrice} USD per ounce</h2>`;
-                } else {
-                    document.getElementById('goldPrice').textContent = 'Gold price data not available';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('goldPrice').textContent = 'Error fetching gold price: ' + error;
-            });
-    </script>
+                    <h1>Current Gold Price</h1>
+                        <p id="goldPrice">Loading...</p>
+                        
+                        <script>
+                            // Function to fetch the current XAUT (Tether Gold) price
+                            const fetchGoldPrice = () => {
+                                fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether-gold&vs_currencies=usd')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        // Extract the Gold (XAUT) price from the API response
+                                        const goldPrice = data['tether-gold'].usd;
+                                        const formattedGoldPrice = goldPrice.toLocaleString();
+                    
+                                        // Update the HTML element with the current Gold (XAUT) price
+                                        document.getElementById('goldPrice').textContent = `Gold Price: $${formattedGoldPrice} USD per ounce`;
+                                    })
+                                    .catch(error => {
+                                        // Handle any errors
+                                        document.getElementById('goldPrice').textContent = 'Gold price data not available';
+                                    });
+                            };
+                            
+                            // Call the fetchGoldPrice function to get the gold price
+                            fetchGoldPrice();
+                        </script>
+                        
                         <div style="display: flex; justify-content: center;">
                             <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjason.selah%2Fposts%2Fpfbid0QpwuKLhoMqhcNJ4oEdepqyJsgF8rvBfXkJdbh38Juu7iLh3WcNX8nKrtJ2WuLYSrl&show_text=true&width=500" width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                             </iframe>
