@@ -37,7 +37,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 150vh;
+            height: 200vh;
         }
         .form-box {
             display: inline-block;
@@ -960,9 +960,27 @@
 <body>
 	
 <div class="centered-div">
-        <div class="form-box">
-        <h1>UX Dashboard Concenpt Design</h1>
-	<img src="images/UX-Dashboard.jpg" alt="UX Dashboard Concept" style="width: 30vw; height: auto;">
+        <div class="form-box"> 
+		
+		<div class="hover-container" onmouseover="showPopup()" onmouseout="hidePopup()"> 
+       		 	<h1>UX Dashboard Concenpt Design</h1>
+			<img src="images/UX-Dashboard.jpg" alt="UX Dashboard Concept" style="width: 30vw; height: auto;">	
+		        <div class="popup-container" id="popup"> 
+				<img src="images/UX-Dashboard.jpg" alt="UX Dashboard Concept" style="width: 60vw; height: auto;">
+		        </div>
+		    </div> 
+		    <script>
+		        function showPopup() {
+		            const popup = document.getElementById('popup');
+		            popup.style.display = 'block';
+		        }
+		
+		        function hidePopup() {
+		            const popup = document.getElementById('popup');
+		            popup.style.display = 'none';
+		        }
+		    </script>
+		
             <p id="errormsg">...</p>
             <h1>Current Bitcoin Price</h1>
             <p id="price">Loading...</p>
