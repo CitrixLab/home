@@ -1099,8 +1099,7 @@
     </script>
 
 
-        <div class="page">
-        <div class="c100 p50 small dark center">
+        <div class="c100 small dark center">
         <span id="percentage">50%</span>
         <div class="slice">
             <div class="bar"></div>
@@ -1114,12 +1113,14 @@
     <script>
         const percentageInput = document.getElementById("percentageInput");
         const percentageSpan = document.getElementById("percentage");
+        const circleDiv = document.querySelector(".c100");
 
         // Update the percentage when the input changes
         percentageInput.addEventListener("input", function() {
             const newPercentage = this.value;
             percentageSpan.textContent = newPercentage + "%";
             updatePercentageFill(newPercentage);
+            updateCircleClass(newPercentage);
         });
 
         function updatePercentageFill(newPercentage) {
@@ -1127,8 +1128,14 @@
             fillElement.style.transform = `rotate(${(newPercentage / 100) * 360}deg)`;
         }
 
+        function updateCircleClass(newPercentage) {
+            const classValue = `c100 p${newPercentage} small dark center`;
+            circleDiv.className = classValue;
+        }
+
         // Initial update based on the default value
         updatePercentageFill(50);
+        updateCircleClass(50);
     </script>
 			<p>...</p>
             <p>...</p>
