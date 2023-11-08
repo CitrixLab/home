@@ -386,15 +386,19 @@
             // Bitcoin price is a numeric value
             const originalPrice = btcSP;
             const increasedPrice = originalPrice * 1.005; // Adding 0.5%
-
-            target1per = ((originalPrice / increasedPrice) - 1) * 100;
-
+            const limitPrice = originalPrice-( originalPrice * (0.03)); // limiting 3% loss
+		
+            target1per = ((originalPrice / increasedPrice) - 1) * 100;
+            target1lper = ((limitPrice / originalPrice) - 1) * 100;
+		
             // Format the increasedPrice with commas
             const formattedPrice1 = increasedPrice.toLocaleString();
             const formattedPrice2 = target1per.toLocaleString();
-
-            document.getElementById('t1').textContent = `Trade No.1: $${formattedPrice1}`;
-            document.getElementById('tp1').textContent = `Trade No.1 Target Percentage: ${formattedPrice2}%`;
+            const formattedPrice3 = limitPrice.toLocaleString();
+	    const formattedPrice4 = target1lper.toLocaleString();
+            
+	    document.getElementById('t1').textContent = `Trade No.1: $${formattedPrice1} Stop limit loss 3%`: 
+            document.getElementById('tp1').textContent = `Trade No.1 Target Percentage: ${formattedPrice2}% Stop Loss Percentage ${formattedPrice4}%`;
             
             document.getElementById('errormsg').textContent = ". . .";
         };
