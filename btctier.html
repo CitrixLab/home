@@ -385,7 +385,7 @@
         const updateTradeInfo = () => {
             // Bitcoin price is a numeric value
             const originalPrice = btcSP;
-            const increasedPrice = originalPrice * 1.005; // Adding 0.5%
+            const increasedPrice = originalPrice + (originalPrice * 0.1); // Adding 10%
             const limitPrice = originalPrice-( originalPrice * (0.03)); // limiting 3% loss
 		
             target1per = ((originalPrice / increasedPrice) - 1) * 100;
