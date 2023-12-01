@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html class="no-js"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,7 +64,7 @@
                             </svg>
                         </button>
                         <!-- Dropdown menu -->
-                        <div id="dropdown" class="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 hidden" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(575px, 165px);" data-popper-placement="bottom">
+                        <div id="dropdown" class="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 hidden" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(597px, 532px);" data-popper-placement="bottom">
                             <ul class="py-2" aria-labelledby="dropdownButton">
                                 <li>
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
@@ -82,9 +81,9 @@
                     <div class="flex flex-col items-center pb-10">
                         <div class="col-xs-4 col-sm-2">
                             <div class="inner-content text-center">
-                                <div class="c100 p51 small dark center green">
+                                <div class="c100 p40 small dark center green">
                                     <span id="percentage" style="color: white;>50%</span>
-                                    <div class="slice"><div class="bar"></div><div class="fill"></div></div>
+                                    <div class=" slice"="">40%</span></div>
                                 </div>
                             </div>
                         </div>
@@ -94,12 +93,11 @@
                             <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover-bg-blue-800 focus-ring-4 focus-outline-none focus-ring-blue-300 dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800">Add friend</a>
                             <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover-bg-gray-100 focus-ring-4 focus-outline-none focus-ring-gray-200 dark-bg-gray-800 dark-text-white dark-border-gray-600 dark-hover-bg-gray-700 dark-hover-border-gray-700 dark-focus-ring-gray-700" style="color: grey;">Message</a>
                         </div>
-                    </div>
                     <label for="percentageInput" style="font-size: 17px;">Enter a Percentage:  </label>
                     <input type="number" id="percentageInput" min="0" max="100" value="50" style="color: brown;">
-                    <p>. . .</p>
-                </div>
-                </div>
+                    <p>. . .</p> 
+                    </div>
+                </div> 
         
         <div class="col-6 col-12-narrower">
         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="background-color: #f4efc;">
@@ -153,7 +151,7 @@
 </div>
  <ul style="text-align: left">
   <li>Trade</li>
-      <span id = "priceBTC" class="text-sm text-gray-500 dark-text-gray-400">BTC</span>
+      <span id="priceBTC" class="text-sm text-gray-500 dark-text-gray-400">BTC</span>
      <script>
     // Fetch BTC price from Binance API
     fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')
@@ -214,7 +212,7 @@
     
 </div></div>
 
-
+</div>
 
     
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
@@ -256,8 +254,8 @@
                     setupPercentage("percentageInput1", "percentage1", 50, "orange");
                 </script>
             </div>
-        </div></section>
-    </div>
+        </section></div>
+    
 
 
 <audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
@@ -277,6 +275,21 @@
                 </div>
 
 
+<audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
+                    <div class="sound">
+                        <div class="sound-icon"></div>
+                        <div class="sound-wave sound-wave_one"></div>
+                        <div class="sound-wave sound-wave_two"></div>
+                        <div class="sound-wave sound-wave_three"></div>
+                    </div>
+                    <div class="segments-box">
+                        <div data-range="1-20" class="segment"><span></span></div>
+                        <div data-range="21-40" class="segment"><span></span></div>
+                        <div data-range="41-60" class="segment"><span></span></div>
+                        <div data-range="61-80" class="segment"><span></span></div>
+                        <div data-range="81-100" class="segment"><span></span></div>
+                    </div>
+                </div>
 <audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
                     <div class="sound">
                         <div class="sound-icon"></div>
