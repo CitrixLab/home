@@ -152,19 +152,29 @@
     <li>Trade</li>
         <span id="priceBTC" class="text-sm text-gray-500 dark-text-gray-400">BTC</span>
         <script>
-            // Fetch BTC price from Binance API
-            fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')
-                .then(response => response.json())
-                .then(data => {
-                    const btcPrice = parseFloat(data.price).toLocaleString('en-US', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
+    function fetchAndDisplayBTCPrice() {
+        // Fetch BTC price from Binance API
+        fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')
+            .then(response => response.json())
+            .then(data => {
+                const btcPrice = parseFloat(data.price).toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
 
-                    document.getElementById('priceBTC').textContent = `BTC: $${btcPrice}`;
-                })
-                .catch(error => document.getElementById('priceBTC').textContent = error);
-        </script>
+                // Update the content of the span element with the formatted BTC price
+                document.getElementById('priceBTC').textContent = `BTC: ${btcPrice}`;
+            })
+            .catch(error => document.getElementById('priceBTC').textContent = error);
+    }
+
+    // Call the function initially
+    fetchAndDisplayBTCPrice();
+
+    // Update every 3 seconds
+    setInterval(fetchAndDisplayBTCPrice, 3000);
+    </script>
+     
     <li>Buy/Sell
         <span class="text-sm text-gray-500 dark-text-gray-400">entry price</span>
         <br>
