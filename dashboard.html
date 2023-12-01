@@ -147,25 +147,31 @@
                         <div class="fill"></div>
                     </div></div>
 </div>
+            
  <ul style="text-align: left">
-  <li>Trade</li>
-      <span id="priceBTC" class="text-sm text-gray-500 dark-text-gray-400">BTC</span>
-     <script>
-    // Fetch BTC price from Binance API
-    fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')
-        .then(response => response.json())
-        .then(data => {
-            const btcPrice = data.price;
-            // Update the content of the span element with the BTC price
-            document.getElementById('priceBTC').textContent = `BTC: ${btcPrice}`;
-        })
-        .catch(error => document.getElementById('priceBTC').textContent = error;
-    </script>
-  <li>Buy/Sell</li>
-    <span class="text-sm text-gray-500 dark-text-gray-400">entry price</span>
-<br>
-    <span class="text-sm text-gray-500 dark-text-gray-400">. . . </span>
+    <li>Trade</li>
+        <span id="priceBTC" class="text-sm text-gray-500 dark-text-gray-400">BTC</span>
+        <script>
+            // Fetch BTC price from Binance API
+            fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')
+                .then(response => response.json())
+                .then(data => {
+                    const btcPrice = parseFloat(data.price).toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+
+                    document.getElementById('priceBTC').textContent = `BTC: $${btcPrice}`;
+                })
+                .catch(error => document.getElementById('priceBTC').textContent = error);
+        </script>
+    <li>Buy/Sell
+        <span class="text-sm text-gray-500 dark-text-gray-400">entry price</span>
+        <br>
+        <span class="text-sm text-gray-500 dark-text-gray-400">. . . </span>
+    </li>
 </ul>
+
     
     </div>
 
