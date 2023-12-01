@@ -1,321 +1,253 @@
 <!DOCTYPE html>
-<html class="no-js"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bitcoin Price Checker</title>
-    <link rel="icon" href="images/citrixlab-ico.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://citrixlab.github.io/home/assets/css/dashboard/main.css">
-    <link rel="stylesheet" href="https://citrixlab.github.io/home/assets/css/dashboard/circle.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet">
-    <style>
-        .centered-div {
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 200vh;
-        }
-        .form-box {
-            display: inline-block;
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-    </style>
-</head>
-<body>
-    <div id="header" style="background-color: #0b283c;">
-        <div class="top">
+<html class="no-js">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Bitcoin Price Checker</title>
+      <link rel="icon" href="images/citrixlab-ico.ico" type="image/x-icon">
+      <link rel="stylesheet" href="https://citrixlab.github.io/home/assets/css/dashboard/main.css">
+      <link rel="stylesheet" href="https://citrixlab.github.io/home/assets/css/dashboard/circle.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet">
+      <style>
+         .centered-div {
+         text-align: center;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 200vh;
+         }
+         .form-box {
+         display: inline-block;
+         padding: 10px;
+         border: 1px solid #ccc;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="header" style="background-color: #0b283c;">
+         <div class="top">
             <div id="logo">
-                <span class="image avatar48"><img src="images/avatar.jpg" alt=""></span>
-                <h1 id="title">Soo Ji Dano</h1>
-                <p>Hyperspace Engineer</p>
+               <span class="image avatar48"><img src="images/avatar.jpg" alt=""></span>
+               <h1 id="title">Soo Ji Dano</h1>
+               <p>Hyperspace Engineer</p>
             </div>
             <nav id="nav">
-                <ul>
-                    <li><a href="#top" id="top-link" class="scrolly active"><span class="icon solid fa-home">Trading Dashboard</span></a></li>
-                    <li><a href="#portfolio" id="portfolio-link" class="scrolly"><span class="icon solid fa-th">Portfolio</span></a></li>
-                    <li><a href="#about" id="about-link" class="scrolly"><span class="" "icon="" solid="" fa-user"="">About Me</span></a></li>
-                    <li><a href="#contact" id="contact-link" class="scrolly"><span class="icon solid fa-envelope">Contact</span></a></li>
-                </ul>
+               <ul>
+                  <li><a href="#top" id="top-link" class="scrolly active"><span class="icon solid fa-home">Trading Dasboard</span></a></li>
+                  <li><a href="#portfolio" id="portfolio-link" class="scrolly"><span class="icon solid fa-th">Portfolio</span></a></li>
+                  <li><a href="#about" id="about-link" class="scrolly"><span class="" "icon="" solid="" fa-user"="">About Me</span></a></li>
+                  <li><a href="#contact" id="contact-link" class="scrolly"><span class="icon solid fa-envelope">Contact</span></a></li>
+               </ul>
             </nav>
-        </div>
-        <div class="bottom">
+         </div>
+         <div class="bottom">
             <ul class="icons">
-                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-                <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-                <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+               <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+               <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+               <li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+               <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+               <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
             </ul>
-        </div>
-    </div>
-    <div id="main">
-        <section id="top" class="one dark cover" style="background-color: #CCE1F2;">
-            
-
-    <div class="container">
-    <div class="row">
-                <div class="col-6 col-12-narrower">
-                <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <div class="flex justify-end px-4 pt-4">
-                        <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-                            <span class="sr-only">Open dropdown</span>
-                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                                <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"></path>
-                            </svg>
-                        </button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdown" class="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 hidden" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(597px, 532px);" data-popper-placement="bottom">
-                            <ul class="py-2" aria-labelledby="dropdownButton">
-                                <li>
+         </div>
+      </div>
+      <div id="main">
+         <section id="top" class="one dark cover" style="background-color: #CCE1F2;">
+            <div class="container">
+               <div class="row">
+                  <div class="col-6 col-12-narrower">
+                     <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex justify-end px-4 pt-4">
+                           <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
+                              <span class="sr-only">Open dropdown</span>
+                              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                                 <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"></path>
+                              </svg>
+                           </button>
+                           <!-- Dropdown menu -->
+                           <div id="dropdown" class="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 hidden" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(901px, 197px);" data-popper-placement="bottom">
+                              <ul class="py-2" aria-labelledby="dropdownButton">
+                                 <li>
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
-                                </li>
-                                <li>
+                                 </li>
+                                 <li>
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover-bg-gray-100 dark:hover-bg-gray-600 dark:text-gray-200 dark:hover-text-white">Export Data</a>
-                                </li>
-                                <li>
+                                 </li>
+                                 <li>
                                     <a href="#" class="block px-4 py-2 text-sm text-red-600 hover-bg-gray-100 dark:hover-bg-gray-600 dark-text-gray-200 dark-hover-text-white">Delete</a>
-                                </li>
-                            </ul>
+                                 </li>
+                              </ul>
+                           </div>
                         </div>
-                    </div>
-                    <div class="flex flex-col items-center pb-10">
-                        <div class="c100 p50 small dark center green">
-                                <span id="percentage" style="color: white;">60%</span>
-                                <div class="slice"><div class="bar"></div><div class="fill"></div></div>
-                            </div>
-                        <h5 class="mb-1 text-xl font-medium text-gray-900 dark-text-white">Soo Ji</h5>
-                        <span class="text-sm text-gray-500 dark-text-gray-400">Main User</span>
-                        <div class="flex mt-4 space-x-3 md:mt-6">
-                            <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover-bg-blue-800 focus-ring-4 focus-outline-none focus-ring-blue-300 dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800">Add friend</a>
-                            <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover-bg-gray-100 focus-ring-4 focus-outline-none focus-ring-gray-200 dark-bg-gray-800 dark-text-white dark-border-gray-600 dark-hover-bg-gray-700 dark-hover-border-gray-700 dark-focus-ring-gray-700" style="color: grey;">Message</a>
+                        <div class="flex flex-col items-center pb-10">
+                           <div class="c100 p59 small dark center green">
+                              <span id="percentage" style="color: white;">59%</span>
+                              <div class="slice">
+                                 <div class="bar"></div>
+                                 <div class="fill"></div>
+                              </div>
+                           </div>
+                           <h5 class="mb-1 text-xl font-medium text-gray-900 dark-text-white">Soo Ji</h5>
+                           <span class="text-sm text-gray-500 dark-text-gray-400">Main User</span>
+                           <div class="flex mt-4 space-x-3 md:mt-6">
+                              <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover-bg-blue-800 focus-ring-4 focus-outline-none focus-ring-blue-300 dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800">Add friend</a>
+                              <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover-bg-gray-100 focus-ring-4 focus-outline-none focus-ring-gray-200 dark-bg-gray-800 dark-text-white dark-border-gray-600 dark-hover-bg-gray-700 dark-hover-border-gray-700 dark-focus-ring-gray-700" style="color: grey;">Message</a>
+                           </div>
                         </div>
-                    </div>
-                    <label for="percentageInput" style="font-size: 17px;">Enter a Percentage:  </label>
-                    <input type="number" id="percentageInput" min="0" max="100" value="50" style="color: brown;">
-                    <p>. . .</p> 
-                </div>
-            </div> 
-        
-        <div class="col-6 col-12-narrower">
-        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="background-color: #f4efc;">
-                    <div class="flex justify-end px-4 pt-4">
-
-    <small style="color: #b1e4f0;">Regular Trading (0.5%)</small>    <div><h1 style="color: transparent;">.Regular Trading</h1></div>
-                        <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-                            <span class="sr-only">Open dropdown</span>
-                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                                <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"></path>
-                            </svg>
-                        </button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdown" class="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 hidden" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(651px, 165px);">
-                            <ul class="py-2" aria-labelledby="dropdownButton">
-                                <li>
+                        <label for="percentageInput" style="font-size: 17px;">Enter a Percentage:  </label>
+                        <input type="number" id="percentageInput" min="0" max="100" value="50" style="color: brown;">
+                        <p>. . .</p>
+                     </div>
+                  </div>
+                  <div class="col-6 col-12-narrower">
+                     <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="background-color: #f4efc;">
+                        <div class="flex justify-end px-4 pt-4">
+                           <small style="color: #b1e4f0;">Regular Trading (0.5%)</small>    
+                           <div>
+                              <h1 style="color: transparent;">.Regular Trading</h1>
+                           </div>
+                           <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
+                              <span class="sr-only">Open dropdown</span>
+                              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                                 <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"></path>
+                              </svg>
+                           </button>
+                           <!-- Dropdown menu -->
+                           <div id="dropdown" class="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 hidden" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(651px, 165px);">
+                              <ul class="py-2" aria-labelledby="dropdownButton">
+                                 <li>
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
-                                </li>
-                                <li>
+                                 </li>
+                                 <li>
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover-bg-gray-100 dark:hover-bg-gray-600 dark:text-gray-200 dark:hover-text-white">Export Data</a>
-                                </li>
-                                <li>
+                                 </li>
+                                 <li>
                                     <a href="#" class="block px-4 py-2 text-sm text-red-600 hover-bg-gray-100 dark:hover-bg-gray-600 dark-text-gray-200 dark-hover-text-white">Delete</a>
-                                </li>
-                            </ul>
+                                 </li>
+                              </ul>
+                           </div>
                         </div>
-                    </div>
-                    
-    
-                        
-<div class="col-6 col-12-narrower" style="padding:10px">
-<div class="c100 p25">
-        <span>25%</span>
-        <div class="slice">
-            <div class="bar"></div>
-            <div class="fill"></div>
-        </div>
-</div>
-
-
-
-
-                </div>
-        <div class="col-6 col-12-narrower">        
-    <div class="c100 p12 small">
-                    <span>12%</span>
-                    <div class="slice">
-                        <div class="bar"></div>
-                        <div class="fill"></div>
-                    </div></div>
-</div>
-            
- <ul style="text-align: left">
-    <li>Trade</li>
-        <span id="priceBTC" class="text-sm text-gray-500 dark-text-gray-400">BTC</span>
-        <script>
-    function fetchAndDisplayBTCPrice() {
-        // Fetch BTC price from Binance API
-        fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')
-            .then(response => response.json())
-            .then(data => {
-                const btcPrice = parseFloat(data.price).toLocaleString('en-US', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
-
-                // Update the content of the span element with the formatted BTC price
-                document.getElementById('priceBTC').textContent = `BTC: Php ${btcPrice}`;
-            })
-            .catch(error => document.getElementById('priceBTC').textContent = error);
-    }
-
-    // Call the function initially
-    fetchAndDisplayBTCPrice();
-
-    // Update every 3 seconds
-    setInterval(fetchAndDisplayBTCPrice, 3000);
-    </script>
-     
-    <li>Buy/Sell</li>
-        <span class="text-sm text-gray-500 dark-text-gray-400">entry price</span>
-        <br>
-        <span class="text-sm text-gray-500 dark-text-gray-400">. . . </span>
-</ul>
-
-    
-    </div>
-
-    <small>___</small>
-
-    
-
-<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="padding:10px; background-color: #f4fdff;">
-
-    <div style="display: flex; justify-content: space-between; background-color: #afd7f7; color: #1c4483; text-align: left; padding: 5px;">
-    <div>
-        <p>Volume</p> 
-    </div>
-
-    <div>
-        <p>PNL</p> 
-    </div>
-
-    <div>
-        <p>Percentage</p> 
-    </div>
-</div>
-
-<div style="display: flex; justify-content: space-between; color: #1c4483; text-align: center; padding: 5px;">
-    <div> 
-        <small>1</small>
-    </div>
-
-    <div> 
-        <small>+P31.00</small>
-    </div>
-
-    <div>
-         
-        <small>+0.1%</small>
-    </div>
-</div>
-
-    <div style=" justify-content: space-between; color: #1c4483; text-align: center; padding: 5px; background-color: #272838; ">
-<a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover-bg-gray-100 focus-ring-4 focus-outline-none focus-ring-gray-200 dark-bg-gray-800 dark-text-white dark-border-gray-600 dark-hover-bg-gray-700 dark-hover-border-gray-700 dark-focus-ring-gray-700" style="color: green;">Edit</a>
-    </div>
-    
-</div></div>
-
-</div>
-
-    
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
-                <script>
-                    function setupPercentage(idInput, idSpan, defaultValue, defaultColor) {
-                        const percentageInput = document.getElementById(idInput);
-                        const percentageSpan = document.getElementById(idSpan);
-                        const circleDiv = document.querySelector(".c100");
-                        percentageSpan.textContent = defaultValue + "%";
-                        updatePercentageFill(defaultValue);
-                        switch (idInput) {
-                            case "percentageInput":
-                                defaultColor = "green";
-                                break;
-                            case "percentageInput1":
-                                defaultColor = "orange";
-                                break;
-                            default:
-                                defaultColor = "";
-                        }
-                        updateCircleClass(defaultValue, defaultColor);
-                        percentageInput.addEventListener("input", function () {
-                            const newPercentage = this.value;
-                            percentageSpan.textContent = newPercentage + "%";
-                            updatePercentageFill(newPercentage);
-                            updateCircleClass(newPercentage, defaultColor);
-                        });
-                        function updatePercentageFill(newPercentage) {
-                            const fillElement = document.querySelector(".c100 .fill");
-                        }
-                        function updateCircleClass(newPercentage, newColor) {
-                            const classValue = `c100 p${newPercentage} small dark center ${newColor}`;
-                            circleDiv.className = classValue;
-                        }
-                    }
-                    // Initialize for the first object
-                    setupPercentage("percentageInput", "percentage", 40, "green");
-                    // Initialize for the second object
-                    setupPercentage("percentageInput1", "percentage1", 50, "orange");
-                </script>
+                        <div class="col-6 col-12-narrower" style="padding:10px">
+                           <div class="c100 p25">
+                              <span>25%</span>
+                              <div class="slice">
+                                 <div class="bar"></div>
+                                 <div class="fill"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-6 col-12-narrower">
+                           <div class="c100 p12 small">
+                              <span>12%</span>
+                              <div class="slice">
+                                 <div class="bar"></div>
+                                 <div class="fill"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <ul style="text-align: left">
+                           <li>Trade</li>
+                           <span id="priceBTC" class="text-sm text-gray-500 dark-text-gray-400">BTC: 38,799.01</span>
+                           <script>
+                              function fetchAndDisplayBTCPrice() {
+                                  // Fetch BTC price from Binance API
+                                  fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')
+                                      .then(response => response.json())
+                                      .then(data => {
+                                          const btcPrice = parseFloat(data.price).toLocaleString('en-US', {
+                                              minimumFractionDigits: 2,
+                                              maximumFractionDigits: 2
+                                          });
+                              
+                                          // Update the content of the span element with the formatted BTC price
+                                          document.getElementById('priceBTC').textContent = `BTC:  $${btcPrice}`;
+                                      })
+                                      .catch(error => document.getElementById('priceBTC').textContent = error);
+                              }
+                              
+                              // Call the function initially
+                              fetchAndDisplayBTCPrice();
+                              
+                              // Update every 3 seconds
+                              setInterval(fetchAndDisplayBTCPrice, 3000);
+                                  
+                           </script>
+                           <li>Buy/Sell
+                           </li>
+                           <span class="text-sm text-gray-500 dark-text-gray-400">entry price</span>
+                           <br>
+                           <span class="text-sm text-gray-500 dark-text-gray-400">. . . </span>
+                        </ul>
+                     </div>
+                     <small>___</small>
+                     <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="padding:10px; background-color: #f4fdff;">
+                        <div style="display: flex; justify-content: space-between; background-color: #afd7f7; color: #1c4483; text-align: left; padding: 5px;">
+                           <div>
+                              <p>Volume</p>
+                           </div>
+                           <div>
+                              <p>PNL</p>
+                           </div>
+                           <div>
+                              <p>Percentage</p>
+                           </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; color: #1c4483; text-align: center; padding: 5px;">
+                           <div> 
+                              <small>1</small>
+                           </div>
+                           <div> 
+                              <small>+P31.00</small>
+                           </div>
+                           <div>
+                              <small>+0.1%</small>
+                           </div>
+                        </div>
+                        <div style=" justify-content: space-between; color: #1c4483; text-align: center; padding: 5px; background-color: #272838; ">
+                           <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover-bg-gray-100 focus-ring-4 focus-outline-none focus-ring-gray-200 dark-bg-gray-800 dark-text-white dark-border-gray-600 dark-hover-bg-gray-700 dark-hover-border-gray-700 dark-focus-ring-gray-700" style="color: green;">Edit</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+               <script>
+                  function setupPercentage(idInput, idSpan, defaultValue, defaultColor) {
+                      const percentageInput = document.getElementById(idInput);
+                      const percentageSpan = document.getElementById(idSpan);
+                      const circleDiv = document.querySelector(".c100");
+                      percentageSpan.textContent = defaultValue + "%";
+                      updatePercentageFill(defaultValue);
+                      switch (idInput) {
+                          case "percentageInput":
+                              defaultColor = "green";
+                              break;
+                          case "percentageInput1":
+                              defaultColor = "orange";
+                              break;
+                          default:
+                              defaultColor = "";
+                      }
+                      updateCircleClass(defaultValue, defaultColor);
+                      percentageInput.addEventListener("input", function () {
+                          const newPercentage = this.value;
+                          percentageSpan.textContent = newPercentage + "%";
+                          updatePercentageFill(newPercentage);
+                          updateCircleClass(newPercentage, defaultColor);
+                      });
+                      function updatePercentageFill(newPercentage) {
+                          const fillElement = document.querySelector(".c100 .fill");
+                      }
+                      function updateCircleClass(newPercentage, newColor) {
+                          const classValue = `c100 p${newPercentage} small dark center ${newColor}`;
+                          circleDiv.className = classValue;
+                      }
+                  }
+                  // Initialize for the first object
+                  setupPercentage("percentageInput", "percentage", 40, "green");
+                  // Initialize for the second object
+                  setupPercentage("percentageInput1", "percentage1", 50, "orange");
+               </script>
             </div>
-        </section></div>
-    
-
-
-<audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
-                    <div class="sound">
-                        <div class="sound-icon"></div>
-                        <div class="sound-wave sound-wave_one"></div>
-                        <div class="sound-wave sound-wave_two"></div>
-                        <div class="sound-wave sound-wave_three"></div>
-                    </div>
-                    <div class="segments-box">
-                        <div data-range="1-20" class="segment"><span></span></div>
-                        <div data-range="21-40" class="segment"><span></span></div>
-                        <div data-range="41-60" class="segment"><span></span></div>
-                        <div data-range="61-80" class="segment"><span></span></div>
-                        <div data-range="81-100" class="segment"><span></span></div>
-                    </div>
-                </div>
-
-
-<audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
-                    <div class="sound">
-                        <div class="sound-icon"></div>
-                        <div class="sound-wave sound-wave_one"></div>
-                        <div class="sound-wave sound-wave_two"></div>
-                        <div class="sound-wave sound-wave_three"></div>
-                    </div>
-                    <div class="segments-box">
-                        <div data-range="1-20" class="segment"><span></span></div>
-                        <div data-range="21-40" class="segment"><span></span></div>
-                        <div data-range="41-60" class="segment"><span></span></div>
-                        <div data-range="61-80" class="segment"><span></span></div>
-                        <div data-range="81-100" class="segment"><span></span></div>
-                    </div>
-                </div>
-<audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
-                    <div class="sound">
-                        <div class="sound-icon"></div>
-                        <div class="sound-wave sound-wave_one"></div>
-                        <div class="sound-wave sound-wave_two"></div>
-                        <div class="sound-wave sound-wave_three"></div>
-                    </div>
-                    <div class="segments-box">
-                        <div data-range="1-20" class="segment"><span></span></div>
-                        <div data-range="21-40" class="segment"><span></span></div>
-                        <div data-range="41-60" class="segment"><span></span></div>
-                        <div data-range="61-80" class="segment"><span></span></div>
-                        <div data-range="81-100" class="segment"><span></span></div>
-                    </div>
-                </div>
-</body></html>
+         </section>
+      </div>
+   </body>
+</html>
