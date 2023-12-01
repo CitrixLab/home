@@ -163,7 +163,7 @@
                 });
 
                 // Update the content of the span element with the formatted BTC price
-                document.getElementById('priceBTC').textContent = `BTC: ${btcPrice}`;
+                document.getElementById('priceBTC').textContent = `BTC: Php ${btcPrice}`;
             })
             .catch(error => document.getElementById('priceBTC').textContent = error);
     }
@@ -175,11 +175,10 @@
     setInterval(fetchAndDisplayBTCPrice, 3000);
     </script>
      
-    <li>Buy/Sell
+    <li>Buy/Sell</li>
         <span class="text-sm text-gray-500 dark-text-gray-400">entry price</span>
         <br>
         <span class="text-sm text-gray-500 dark-text-gray-400">. . . </span>
-    </li>
 </ul>
 
     
