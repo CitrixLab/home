@@ -35,7 +35,7 @@
                 <ul>
                     <li><a href="#top" id="top-link" class="scrolly active"><span class="icon solid fa-home">Intro</span></a></li>
                     <li><a href="#portfolio" id="portfolio-link" class="scrolly"><span class="icon solid fa-th">Portfolio</span></a></li>
-                    <li><a href="#about" id="about-link" class="scrolly"><span class "icon solid fa-user">About Me</span></a></li>
+                    <li><a href="#about" id="about-link" class="scrolly"><span class="" "icon="" solid="" fa-user"="">About Me</span></a></li>
                     <li><a href="#contact" id="contact-link" class="scrolly"><span class="icon solid fa-envelope">Contact</span></a></li>
                 </ul>
             </nav>
@@ -52,17 +52,21 @@
     </div>
     <div id="main">
         <section id="top" class="one dark cover" style="background-color: #CCE1F2;">
-            <div class="container">
+            
+
+    <div class="container">
+    <div class="row">
+                <div class="col-6 col-12-narrower">
                 <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <div class="flex justify-end px-4 pt-4">
                         <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
                             <span class="sr-only">Open dropdown</span>
                             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                                <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                                <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"></path>
                             </svg>
                         </button>
                         <!-- Dropdown menu -->
-                        <div id="dropdown" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                        <div id="dropdown" class="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 hidden" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(651px, 165px);">
                             <ul class="py-2" aria-labelledby="dropdownButton">
                                 <li>
                                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
@@ -79,8 +83,8 @@
                     <div class="flex flex-col items-center pb-10">
                         <div class="col-xs-4 col-sm-2">
                             <div class="inner-content text-center">
-                                <div class="c100 p50 small dark center orange">
-                                    <span id="percentage">50%</span>
+                                <div class="c100 p55 small dark center green">
+                                    <span id="percentage">55%</span>
                                     <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                                 </div>
                             </div>
@@ -94,8 +98,55 @@
                     </div>
                     <label for="percentageInput" style="font-size: 17px;">Enter a Percentage:  </label>
                     <input type="number" id="percentageInput" min="0" max="100" value="50" style="color: brown;">
-                    <p  style="font-size: 16px;">. . .</p>
+                    <p>. . .</p>
                 </div>
+                </div>
+        
+        <div class="col-6 col-12-narrower">
+        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div class="flex justify-end px-4 pt-4">
+                        <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
+                            <span class="sr-only">Open dropdown</span>
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                                <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"></path>
+                            </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdown" class="z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 hidden" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(651px, 165px);">
+                            <ul class="py-2" aria-labelledby="dropdownButton">
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover-bg-gray-100 dark:hover-bg-gray-600 dark:text-gray-200 dark:hover-text-white">Export Data</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-sm text-red-600 hover-bg-gray-100 dark:hover-bg-gray-600 dark-text-gray-200 dark-hover-text-white">Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center pb-10">
+                        <div class="col-xs-4 col-sm-2">
+                            <div class="inner-content text-center">
+                                <div class="c100 p55 small dark center green">
+                                    <span id="percentage">55%</span>
+                                    <div class="slice"><div class="bar"></div><div class="fill"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="mb-1 text-xl font-medium text-gray-900 dark-text-white">User 2</h5>
+                        <span class="text-sm text-gray-500 dark-text-gray-400">Secondary User</span>
+                        <div class="flex mt-4 space-x-3 md:mt-6">
+                            <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover-bg-blue-800 focus-ring-4 focus-outline-none focus-ring-blue-300 dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800">Add friend</a>
+                            <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover-bg-gray-100 focus-ring-4 focus-outline-none focus-ring-gray-200 dark-bg-gray-800 dark-text-white dark-border-gray-600 dark-hover-bg-gray-700 dark-hover-border-gray-700 dark-focus-ring-gray-700" style="color: grey;">Message</a>
+                        </div>
+                    </div>
+                    <label for="percentageInput1" style="font-size: 17px;">Enter a Percentage:  </label>
+                    <input type="number" id="percentageInput1" min="0" max="100" value="50" style="color: brown;">
+                    <p>. . .</p>
+        </div>
+    </div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
                 <script>
                     function setupPercentage(idInput, idSpan, defaultValue, defaultColor) {
@@ -137,5 +188,21 @@
             </div>
         </section>
     </div>
-</body>
+
+
+<audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
+                    <div class="sound">
+                        <div class="sound-icon"></div>
+                        <div class="sound-wave sound-wave_one"></div>
+                        <div class="sound-wave sound-wave_two"></div>
+                        <div class="sound-wave sound-wave_three"></div>
+                    </div>
+                    <div class="segments-box">
+                        <div data-range="1-20" class="segment"><span></span></div>
+                        <div data-range="21-40" class="segment"><span></span></div>
+                        <div data-range="41-60" class="segment"><span></span></div>
+                        <div data-range="61-80" class="segment"><span></span></div>
+                        <div data-range="81-100" class="segment"><span></span></div>
+                    </div>
+                </div></body>
 </html>
