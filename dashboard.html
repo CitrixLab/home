@@ -83,7 +83,7 @@
                         <div class="col-xs-4 col-sm-2">
                             <div class="inner-content text-center">
                                 <div class="c100 p51 small dark center green">
-                                    <span id="percentage">51%</span>
+                                    <span id="percentage" style="color: white;>50%</span>
                                     <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                                 </div>
                             </div>
@@ -153,7 +153,18 @@
 </div>
  <ul style="text-align: left">
   <li>Trade</li>
-      <span class="text-sm text-gray-500 dark-text-gray-400">BTC</span>
+      <span id = "priceBTC" class="text-sm text-gray-500 dark-text-gray-400">BTC</span>
+     <script>
+    // Fetch BTC price from Binance API
+    fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')
+        .then(response => response.json())
+        .then(data => {
+            const btcPrice = data.price;
+            // Update the content of the span element with the BTC price
+            document.getElementById('priceBTC').textContent = `BTC: ${btcPrice}`;
+        })
+        .catch(error => document.getElementById('priceBTC').textContent = error;
+    </script>
   <li>Buy/Sell</li>
     <span class="text-sm text-gray-500 dark-text-gray-400">entry price</span>
 <br>
