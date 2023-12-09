@@ -1,0 +1,53 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const path = require('path');
+const morgan = require('morgan');
+const ejs = require('ejs');
+
+const app = express();
+const port = 3000;
+
+// Replace <username> and <password> with your MongoDB Atlas username and password
+const uri = 'mongodb+srv://traderuser:M9JzTFZEuzMQk7_@cluster0.cmokp7j.mongodb.net/?retryWrites=true&w=majority';
+
+// Set up EJS as the view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// Use Morgan for logging
+app.use(morgan('dev'));
+
+// Connect to MongoDB using Mongoose
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Define a simple schema and model
+const LogEntry = mongoose.model('LogEntry', { message: String });
+
+// Middleware to log messages and save to MongoDB
+app.use((req, res, next) => {
+  const message = `${new Date().toLocaleString()} - ${req.method} ${req.url}`;
+  console.log(message);
+
+  // Save the log entry to MongoDB
+  const logEntry = new LogEntry({ message });
+  logEntry.save();
+
+  next();
+});
+
+// Route to render the logs in the index.html
+app.get('/', async (req, res) => {
+  // Fetch log entries from MongoDB
+  const logEntries = await LogEntry.find().exec();
+
+  // Render the logs in the index.html using EJS
+  res.render('index', { logEntries });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
