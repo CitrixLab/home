@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+  body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h2 {
+    font-size: 2em;
+    margin-bottom: 5px;
+  }
+  
+  .login-form {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .login-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+  .login-form button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  #popup-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 10; /* Ensure the popup is above other elements */
+  }
+
+  #popup-message.show {
+    display: block; /* Show the popup when the class is added */
+  }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+        <h2>Shopifya</h2>
+        <p>Cebu Locals</p>
+    </div>
+    
+    <div class="login-section">
+      <form id="login-form" class="login-form">
+          <h1>Login</h1>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required aria-label="Username">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required aria-label="Password">
+          <button type="submit">Login</button>
+      </form>
+
+ </div>
+        <div id="popup-message" aria-live="polite" style="visibility: hidden;"></div>
+  
+  <script>
+  const loginForm = document.getElementById('login-form');
+  const popupMessage = document.getElementById('popup-message');
+
+  loginForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const targetUrl = "index.html";
+    // Load credentials from XML file (replace with actual path)
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        const xmlDoc = this.responseXML;
+        const users = xmlDoc.getElementsByTagName("user");
+        let found = false;
+
+        for (let i = 0; i < users.length; i++) {
+          const user = users[i];
+          const userUsername = user.getElementsByTagName("username")[0].textContent;
+          const userPassword = user
+.getElementsByTagName("password")[0].textContent;
+
+        if (username === userUsername && password === userPassword) {
+          
+          popupMessage.textContent = 'Login successful!';
+          found = true;
+          popupMessage.style.visibility = 'visible';
+           // Redirect to the target URL after a short delay (optional)
+  setTimeout(() => {
+    window.location.href = targetUrl;
+  }, 500); // Redirect after 1.5 seconds
+          break;
+        }
+      }
+
+      if (!found) {
+        
+        popupMessage.textContent = 'Invalid username or password';
+        popupMessage.style.visibility = 'visible';
+      }
+    }
+  };
+
+    
+    setTimeout(function(){
+        popupMessage.style.visibility = 'hidden';
+        }, 2000);
+    
+  xmlhttp.open("GET", "/license/databasecredentials.xml", true);
+  xmlhttp.send();
+});
+
+  </script>
+  
+</body>
+</html>
