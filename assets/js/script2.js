@@ -1,22 +1,20 @@
 function assembleWebsite(url, contentDivId) {
   fetch(url)
     .then(response => response.json())
-    .then(data => buildHTML(data, contentDivId))
+    .then(data => {
+      if (!data) {
+        const contentDiv = document.getElementById(contentDivId);
+        contentDiv.textContent = 'Error loading website structure: Empty data';
+        return;
+      }
+      buildHTML(data, contentDivId);
+    })
     .catch(error => {
       const contentDiv = document.getElementById(contentDivId);
       console.error("Error loading website structure:", error);
-
-      // Check for specific error types
-      if (error instanceof SyntaxError) {
-        contentDiv.textContent = 'Error in JSON format: ' + error.message;
-      } else if (error instanceof TypeError) {
-        contentDiv.textContent = 'Error accessing data in JSON: ' + error.message;
-      } else {
-        contentDiv.textContent = 'Error loading website structure: ' + error.message;
-      }
+      contentDiv.textContent = 'Error loading website structure: ' + error.message;
     });
 }
-
 
 function buildHTML(data, contentDivId) {
   const contentDiv = document.getElementById(contentDivId);
@@ -36,6 +34,8 @@ function buildHTML(data, contentDivId) {
 }
 
 function buildHeadElements(headData) {
+  if (!headData) return []; // Handle missing head data
+
   const elements = [];
   for (const key in headData) {
     const element = document.createElement(key);
@@ -52,6 +52,8 @@ function buildHeadElements(headData) {
 }
 
 function buildBodyElements(bodyData) {
+  if (!bodyData) return []; // Handle missing body data
+
   const elements = [];
   for (const section in bodyData) {
     const sectionElement = buildSectionElement(bodyData[section]);
